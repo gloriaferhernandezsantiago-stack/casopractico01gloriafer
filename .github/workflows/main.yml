@@ -20,7 +20,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Build APK with GluonFX
-      run: mvn gluonfx:build gluonfx:package -Dgluonfx.target=android
+      run: mvn gluonfx:build gluonfx:package -Dgluonfx.mainClass=casopractico01gloriafer.App -Dgluonfx.target=android
       env:
         GRAALVM_HOME: ${{ env.JAVA_HOME }}
 
