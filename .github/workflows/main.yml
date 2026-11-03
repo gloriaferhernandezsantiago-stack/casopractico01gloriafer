@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build JavaFX JAR
 
 on:
   push:
@@ -19,13 +19,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Build Android APK
-      run: mvn gluonfx:build gluonfx:package -Dgluonfx.mainClass=casopractico01gloriafer.App -Dgluonfx.target=android -DskipTests
-      env:
-        GRAALVM_HOME: ${{ env.JAVA_HOME }}
+    - name: Build with Maven
+      run: mvn clean package -DskipTests
 
-    - name: Upload APK Artifact
+    - name: Upload JAR Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: app-android-apk
-        path: target/gluonfx/**/*.apk
+        name: app-executable
+        path: target/*.jar
